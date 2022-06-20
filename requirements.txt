@@ -1,0 +1,9 @@
+asgiref==3.5.2
+Django==4.0.4
+emoji==1.6.3
+numpy==1.22.3
+PyQt6==6.3.0
+PyQt6-Qt6==6.3.0
+PyQt6-sip==13.3.1
+sqlparse==0.4.2
+tzdata==2022.1
