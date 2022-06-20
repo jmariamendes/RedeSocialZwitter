@@ -1,0 +1,134 @@
+<!-- dwitter/templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Include the Bulma CSS framework for styling -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>Zwitter</title>
+</head>
+<head>
+<script type="text/javascript">
+function startTime()
+{
+var today=new Date();
+var h=today.getHours();
+var m=today.getMinutes();
+var s=today.getSeconds();
+var a=today.getFullYear();
+var mes=today.getMonth();
+var dia=today.getDate();
+// adicione um zero na frente de números<10
+m=checkTime(m);
+s=checkTime(s);
+dia=checkTime(dia);
+mes=checkMes(mes);
+document.getElementById('txt').innerHTML=dia+"/"+mes+"/"+a+" "+h+":"+m+":"+s;
+t=setTimeout('startTime()',500);
+}
+function checkTime(i)
+{
+if (i<10)
+{
+i="0" + i;
+}
+return i;
+}
+function checkMes(m)
+{
+if (m==0)
+    m="Jan"
+else if (m==1)
+    m="Fev"
+else if (m==2)
+    m="Mar"
+else if (m==3)
+    m="Abr"
+else if (m==4)
+    m="Mai"
+else if (m==5)
+    m="Jun"
+else if (m==6)
+    m="Jul"
+else if (m==7)
+    m="Ago"
+else if (m==8)
+    m="Set"
+else if (m==9)
+    m="Out"
+else if (m==10)
+    m="Nov"
+else if (m==11)
+    m="Dez";
+return m;
+}
+</script>
+</head>
+
+<body>
+    <a href="{% url 'dwitter:dashboard' %} ">
+    <section class="hero is-small is-success mt-7">
+            <div class="hero-head is-small has-text-right">
+                <!--<div class="block">
+                    <a href="{% url 'dwitter:logout' %}">
+                    <button class="button is-rounded is-small is-selected is-hovered is-outlined has-text-right">
+                        Sair
+                        <span class="icon is-small">
+                            <i class="fas fa-times"></i>
+                        </span>
+                    </button>
+                    </a>
+                </div>-->
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                      <div class="buttons">
+                        <a class="button is-rounded is-small is-success is-light is-hovered is-outlined"
+                           href="{% url 'admin:password_change' %}"> Trocar senha </a>
+                        <a class="button is-rounded is-small is-success is-light is-hovered is-outlined"
+                           href="{% url 'dwitter:logout' %}"> Sair</a>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-body is-small">
+                <div class="block">
+                    <a href="{% url 'dwitter:dashboard' %}">
+                    <h1 class="title is-1 is-size-3">Zwitter
+                        <span class="is-small is-size-5"> - a rede social do Zé Maria </span>
+                    </h1>
+                    </a>
+                </div>
+                <div class="block">
+                    {% if user.is_authenticated %}
+                        <p class="is-size-5 has-text-right"> Bem vindo(a) <strong>
+                            {{request.user.username}}</strong>
+                        </p>
+                    {% else %}
+                        <p class="is-size-4 has-text-right"> Bem vindo
+                        </p>
+                    {% endif %}
+                    <!--<span class="is-size-5 has-text-left" onload="startTime()"> <div>id="txt"></div>
+                    </span>-->
+
+                </div>
+            </div>
+
+
+    </section>
+    </a>
+    <div class="container">
+        <div class="columns">
+
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+    </div>
+</body>
+</html>

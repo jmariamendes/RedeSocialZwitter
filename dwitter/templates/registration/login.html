@@ -1,0 +1,45 @@
+<!--users/templates/registration/login.html-->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    label, input {
+        display: block;
+    }
+    span.helptext {
+        display: none;
+    }
+</style>
+
+<div class="column is-one-third"></div>
+<div class="column is-one-third">
+    <div class="box">
+        <div class="block">
+            <h1 class="title is-1 has-text-centered">
+                Login
+            </h1>
+
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="button is-success mt-5 is-centered"
+                                type="submit">Login
+                </button>
+                <div class="block">
+                    <p></p>
+                    <p class="is-small has-text-left"> Novo(a) por aqui ?
+                        <a href="{% url 'dwitter:register' %}"> Cadastre-se</a>
+                    </p>
+                    <!--<p class="is-small has-text-left">
+                        <a href="{% url 'dwitter:password_change' %}"> Esqueceu a senha ?</a>
+                    </p>-->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="column is-one-third"></div>
+
+{% endblock %}
