@@ -80,6 +80,7 @@ DATABASES = {
         'NAME': 'dbsocial',
         'USER': 'postgres',
         'PASSWORD': 'ibiuna27',
+        'CONN_MAX_AGE':0,
     }
 }
 
