@@ -1,0 +1,60 @@
+<!-- dwitter/templates/dwitter/trata_msg_user.html -->
+
+{% extends 'dwitter/mensagens.html' %}
+
+
+{% block mensagens_user %}
+
+<article class="column is-two-third">
+    <div class="block">
+        <p>'</p>
+        <p class="title is-5 has-text-centered">
+        Mensagens de {{profile.user.username|capfirst}}
+        </p>
+    </div>
+    <article class="box">
+        {% for msg in msg_user %}
+        {% if msg.origem_id == request.user.profile.id %}
+            <article class="message is-small is-danger">
+                <div class="message-body">
+                    <p>
+                    ------>({{ msg.created_at }}) - Você <-------
+                    </p>
+                    <p class="is-size-5">
+                    {{msg.texto}}
+                    </p>
+                </div>
+            </article>
+        {% else %}
+            <article class="message is-small is-primary">
+                <div class="message-body">
+                    <p>
+                    ------>({{ msg.created_at }}) - {{profile.user.username}} <-------
+                    </p>
+                    <p class="is-size-5">
+                    {{msg.texto}}
+                    </p>
+                </div>
+            </article>
+        {% endif %}
+        {% endfor %}
+    </article>
+</article>
+<div class="column is-two-third">
+    <div class="block">
+        <p>'</p>
+        <p class="title is-5 has-text-centered">Responder</p>
+    </div>
+    <div class="box">
+        <form method="post">
+             {% csrf_token %}
+             <textarea class="textarea is-success is-medium" name="texto">
+             </textarea>
+             <button class="button is-success is-fullwidth is-medium mt-5"
+                     type="submit">Enviar
+             </button>
+        </form>
+    </div>
+</div>
+
+{% endblock mensagens_user %}

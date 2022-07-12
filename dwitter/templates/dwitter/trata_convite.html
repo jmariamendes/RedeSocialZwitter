@@ -1,4 +1,4 @@
-<!-- dwitter/templates/dwitter/profile.html -->
+<!-- dwitter/templates/dwitter/trata_convite.html -->
 
 {% extends 'base.html' %}
 
@@ -8,22 +8,14 @@
 
     <div class="block">
     <h1 class="title is-1">
-        Zweets de {{profile.user.username|upper}}
+        Convite de {{profile.user.username|upper}}
     </h1>
     </div>
     <form method="post">
     {% csrf_token %}
         <div class="buttons has-addons">
-             {% if profile in user.profile.follows.all %}
-                <button class="button is-success is-static">Seguir</button>
-                <button class="button is-danger" name="follow" value="unfollow">Parar</button>
-            {% elif convidado %}
-                <button class="button is-success is-static">Seguir</button>
-                <button class="button is-danger is-static">Parar</button>
-            {% else %}
-                <button class="button is-success" name="follow" value="follow">Seguir</button>
-                <button class="button is-danger is-static">Parar</button>
-            {% endif %}
+               <button class="button is-success" name="convite" value="aceitar">Aceitar</button>
+                <button class="button is-danger" name="convite" value="ignorar">Ignorar</button>
         </div>
     </form>
     <div class="content">
