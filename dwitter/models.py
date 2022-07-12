@@ -40,7 +40,7 @@ def create_profile(sender, instance, created, **kwargs):
 
 class Dweet(models.Model):
     user = models.ForeignKey(
-        User, related_name="dweets", on_delete=models.DO_NOTHING
+        User, related_name="dweets", on_delete=models.CASCADE
     )
     body = models.CharField(max_length=140)
     created_at = models.DateTimeField(auto_now_add=True)
