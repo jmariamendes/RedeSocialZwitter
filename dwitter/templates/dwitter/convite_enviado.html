@@ -1,0 +1,37 @@
+<!--dwiter/templates/dwiter/convite_enviado.html-->
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<style>
+    label, input {
+        display: block;
+    }
+    span.helptext {
+        display: none;
+    }
+</style>
+
+<div class="column is-one-third"></div>
+<div class="column is-one-third">
+    <div class="box">
+        <div class="block">
+            <h1 class="title is-3 has-text-centered">
+                Convite
+            </h1>
+        <div class="block">
+            <div class="notification is-success">
+                <a href="{% url 'dwitter:dashboard' %} ">
+                    <p class="is-size-5 has-text-left"> Seu convite foi enviado com sucesso.
+                        Obrigado !!!
+                    </p>
+                </a>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<div class="column is-one-third"></div>
+
+{% endblock %}

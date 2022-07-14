@@ -5,7 +5,8 @@ from django.contrib.auth import login
 from django.db.models import Q
 from django.db.models import F
 from django.db.models.functions import Now
-from .forms import DweetForm, CustomUserCreationForm
+from django.core.mail import send_mail
+from .forms import DweetForm, CustomUserCreationForm, ConviteAmigoForm
 from .models import Dweet, Profile, Convites, Mensagens, ControleMsgs
 
 ''' View da tela inicial/dashboard:
@@ -315,4 +316,37 @@ def trata_msg_user(request, pk):
                                                            'existeMsgNaoLida': existeMsgNaoLida
                                                            }
                   )
-    #return redirect("dwitter:dashboard")
+
+
+def convidar_amigo(request):
+    endereco_email = []
+    existeMsgNaoLida = ControleMsgs.objects.filter(destino=request.user, created_at__gt=F('exibida_at')).count() > 0
+    if request.method == "GET":
+        return render(request, "dwitter/convite_amigo.html", {"form": ConviteAmigoForm,
+                                                              "existe_convite": request.user.profile.existe_convite,
+                                                              "existe_mensagem": request.user.profile.existe_mensagem,
+                                                              'existeMsgNaoLida': existeMsgNaoLida
+                                                              }
+                      )
+    elif request.method == "POST":
+        form = ConviteAmigoForm(request.POST)
+        if form.is_valid():
+            nome_amigo = form.cleaned_data['nome']
+            endereco_email.append(form.cleaned_data['email'])
+            mensagem = f"Olá {nome_amigo}, \n       você foi convidado por {request.user.username}" \
+                       f" para participar da rede social Zwitter. \n\n" \
+                       f"       Venha fazer parte desta rede onde todos são membros da família.\n\n" \
+                       f"       Acesse o link http://zewitter.herokuapp.com/. \n\n" \
+                       f"       Esperamos você lá !!!!\n\n" \
+                       f"       Abraços\n" \
+                       f"Zwitter - a rede social do Zé Maria"
+
+            send_mail("Zwitter - a rede social do Zé Maria",
+                      mensagem,
+                      "jmariamendes@uol.com.br",
+                      endereco_email)
+            return redirect("dwitter:convite_enviado")
+
+
+def convite_enviado(request):
+    return render(request, "dwitter/convite_enviado.html")
