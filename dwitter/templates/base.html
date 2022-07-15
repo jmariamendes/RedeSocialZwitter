@@ -75,21 +75,7 @@ return m;
     <a href="{% url 'dwitter:dashboard' %} ">
     <section class="hero is-small is-success mt-7">
             <div class="hero-head is-small has-text-right">
-                {% if user.is_authenticated %}
-                    <div class="navbar-menu">
-                    <div class="navbar-start">
-                        <div class="navbar-item">
-                          <div class="content is-size-7 ">
-                              <a href="{% url 'dwitter:convidar_amigo' %}">
-                                  <span class="icon">
-                                        <i class="fa-solid fa-users"></i>
-                                  </span>
-                                  <span>Convide um(a) amigo(a) </span>
-                              </a>
-                          </div>
-                        </div>
-                    </div>
-                {% endif %}
+
                 <div class="navbar-end">
                     <div class="navbar-item">
                       <div class="buttons">
@@ -122,6 +108,15 @@ return m;
                                     </a>
                                {% endif %}
                             {% endif %}
+                            <a class="button is-rounded is-small is-success is-light is-hovered is-outlined"
+                                    href="{% url 'dwitter:convidar_amigo' %}">
+
+                                  <span class="icon">
+                                        <i class="fa-solid fa-users"></i>
+                                  </span>
+                                  <span>Convide um(a) amigo(a) </span>
+                              </a>
+
                             <a class="button is-rounded is-small is-success is-light is-hovered is-outlined"
                                     href="{% url 'dwitter:password_change' %}">
                                     <span class="icon">
