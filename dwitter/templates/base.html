@@ -77,6 +77,16 @@ return m;
             <div class="hero-head is-small has-text-right">
 
                 <div class="navbar-end">
+                    {% if user.is_authenticated %}
+                        <a class="navbar-item"
+                                        href="{% url 'dwitter:convidar_amigo' %}">
+
+                                      <span class="icon">
+                                            <i class="fa-solid fa-users"></i>
+                                      </span>
+                                      <span>Convide um(a) amigo(a) </span>
+                        </a>
+                    {% endif %}
                     <div class="navbar-item">
                       <div class="buttons">
                           {% if user.is_authenticated %}
@@ -109,15 +119,6 @@ return m;
                                {% endif %}
                             {% endif %}
                             <a class="button is-rounded is-small is-success is-light is-hovered is-outlined"
-                                    href="{% url 'dwitter:convidar_amigo' %}">
-
-                                  <span class="icon">
-                                        <i class="fa-solid fa-users"></i>
-                                  </span>
-                                  <span>Convide um(a) amigo(a) </span>
-                              </a>
-
-                            <a class="button is-rounded is-small is-success is-light is-hovered is-outlined"
                                     href="{% url 'dwitter:password_change' %}">
                                     <span class="icon">
                                         <i class="fa-solid fa-key"></i>
@@ -133,10 +134,11 @@ return m;
                             </a>
                          {% endif %}
                       </div>
+
                     </div>
                 </div>
                 </div>
-            </div>
+            <!--</div>-->
 
             <div class="hero-body is-small">
                 <div class="block">
