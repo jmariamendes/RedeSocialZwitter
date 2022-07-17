@@ -81,6 +81,7 @@ def profile_list(request):
 
 
 def profile(request, pk):
+    resp = ""
     if not hasattr(request.user, 'profile'):
         missing_profile = Profile(user=request.user)
         missing_profile.save()
@@ -97,9 +98,12 @@ def profile(request, pk):
             convite.save()
             profile.existe_convite = True
             profile.save()
+            resp = f"Solicitação enviada para {request.user.profile.user}"
         elif action == "unfollow":
             current_user_profile.follows.remove(profile)
         current_user_profile.save()
+    else:
+        resp = ""
 
     convidado = True
     # verifica se o usuário atual já solicitou convite para este usuário
@@ -108,21 +112,14 @@ def profile(request, pk):
     except Convites.DoesNotExist:
         convidado = False
 
-    '''existeConvitePendente = True
-    # verifica se este usuário possui algum convite pendente
-    try:
-        convite = Convites.objects.get(user=pk)
-    except Convites.DoesNotExist:
-        existeConvitePendente = False'''
     return render(request, "dwitter/profile.html", {"profile": profile,
                                                     "convidado": convidado,
+                                                    "resp": resp,
                                                     "existe_convite": request.user.profile.existe_convite,
                                                     "existe_mensagem": request.user.profile.existe_mensagem,
-                                                    'existeMsgNaoLida': existeMsgNaoLida
+                                                    "existeMsgNaoLida": existeMsgNaoLida
                                                     }
                   )
-
-    # return render(request, "dwitter/profile.html", {"profile": profile})
 
 
 ''' View da tela para a inclusão de novos usuários
