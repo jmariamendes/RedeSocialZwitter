@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "dwitter",
+    "rest_framework"
 ]
 
 MIDDLEWARE = [
@@ -136,6 +137,13 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = "jmariamendes@uol.com.br"
 EMAIL_HOST_PASSWORD = "ibiuna27"
 EMAIL_USE_TLS = True
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [],
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+}
 
 
 import django_on_heroku

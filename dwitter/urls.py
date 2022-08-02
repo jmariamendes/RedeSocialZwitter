@@ -21,4 +21,12 @@ urlpatterns = [
     path("trata_msg_user/<int:pk>", views.trata_msg_user, name="trata_msg_user"),
     path("convidar_amigo", views.convidar_amigo, name="convidar_amigo"),
     path("convite_enviado", views.convite_enviado, name="convite_enviado"),
+        # API´s disponíveis no sistema, via Django/REST
+    path("api/v2/usuarios", views.get_usuarios, name="get_usuarios"), # pesquisa todos usuarios
+    path("api/v1/usuarios/<str:user>", views.get_update_usuarios, name="get_update_usuarios"), # pesq. usuer por nomw
+    path("api/v1/usuario/<int:pk>", views.get_usuario, name="get_usuario"), # pesq. user por Id
+    path("api/v1/seguidores/<str:user>", views.get_follows, name="get_follows"), # pesq. seguidores/seguindo do user
+
+
 ]
+
