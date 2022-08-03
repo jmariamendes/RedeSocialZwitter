@@ -26,7 +26,5 @@ urlpatterns = [
     path("api/v1/usuarios/<str:user>", views.get_update_usuarios, name="get_update_usuarios"), # pesq. usuer por nomw
     path("api/v1/usuario/<int:pk>", views.get_usuario, name="get_usuario"), # pesq. user por Id
     path("api/v1/seguidores/<str:user>", views.get_follows, name="get_follows"), # pesq. seguidores/seguindo do user
-
-
 ]
 

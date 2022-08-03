@@ -35,7 +35,7 @@ def create_profile(sender, instance, created, **kwargs):
         user_profile.save()
 
 
-''' Tabela das mensagens postadas pelos usuários'''
+''' Tabela dos Zweets postadas pelos usuários'''
 
 
 class Dweet(models.Model):
@@ -55,6 +55,9 @@ class Dweet(models.Model):
 # post_save.connect(create_profile, sender=User)
 
 
+''' Tabela para controle de convites para seguir um usuário '''
+
+
 class Convites(models.Model):
     user = models.ForeignKey(
         User, related_name="convite", on_delete=models.CASCADE
@@ -68,6 +71,9 @@ class Convites(models.Model):
             f"({self.created_at:%Y-%m-%d %H:%M}): "
             f"{self.solicitante}"
         )
+
+
+''' Tabela para troca de mensagens inBox entre os uusários '''
 
 
 class Mensagens(models.Model):
@@ -87,6 +93,9 @@ class Mensagens(models.Model):
             f"({self.created_at:%Y-%m-%d %H:%M}): "
             f"{self.origem_nome}"
         )
+
+
+''' Tabela para controle de exibição de mesagens recebidas '''
 
 
 class ControleMsgs(models.Model):

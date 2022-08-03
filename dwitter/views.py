@@ -359,9 +359,10 @@ def convite_enviado(request):
 '''********************************************************************************************************************
    *  
    *                                REST API´s
-   *        - get usuários - retorna todos usuários
+   *        - get usuários - retorna todos usuários, ou um específico dependendo do parâmetro recebido na URL
    *        - post usuário - inclui um novo uisuário(não implementado)
-   *        - get usuario/<pk> - retorna um usuário específico
+   *        - get usuario/<pk> - retorna um usuário específico, através do Id
+   *        - get usuario/<user> - retorna um usuário específico, através do Username
    *        - put usuario/<pk> - altera os dados de um usuário
    *        - get follows - retorna os seguidores e os seguidos de um usuário
    *
