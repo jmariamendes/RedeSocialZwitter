@@ -14,8 +14,10 @@ O Tutorial é bem simples e cumpre perfeitamente o objetivo de ensinar Python e 
   4. Implementações na funcionalidade de Seguir um usuário (follow/unfollow), fazendo com que o usuário a ser seguido aprove as solicitações, através de uma sinalização  de Convite no HTML principal (base.html) e implementando rotinas novas para que o usuário faça a aprovação do convite. Após a aprovação, uma mensagem é enviada para o usuário solicitante.
   5. Implementação da funcionalidade de troca de mensagens InBox entre usuários, sinalizando a existencias de mensagens novas no HTML principal (base.html) e implementando rotinas novas para exibir e escrever mensagens.
   6. Implementação da funcionalidade Convide Um Amigo, para que os usuários possam convidar amigos para participarem da Rede. O convite é feito através de envio de e-mail.
-  7. Deployment do projeto, utilizando a plataforma Heroku
-  8. Liberação para utilização publica.
+  7. Implementação de API´s, utilizando a plataforma Django REST, com JSON. As API´s disponíveis para serem consumidas são: 1. Pesquisa de todos os usuário. 2. Pesquisa de um usuário, através do Id ou Username. 3. Alteração de alguns dados de um usuário. 4. Pesquisa dos seguidores/seguindo de um usuário
+  8. Para os testes de consumo das API´s, foi desenvolvido um aplicativo "client" desktop, utilizando Python e PyQt.
+  9. Deployment do projeto, utilizando a plataforma Heroku
+  10. Liberação para utilização publica.
   
 O endereço para a utilização da # RedeSocialZwitter é http://zewitter.herokuapp.com/. Faça uma visita, para verificar as suas funcionalidades. O meu usuario na Zwitter é josemaria, e terei imenso prazer em trocar algumas mensagens com você.
 
