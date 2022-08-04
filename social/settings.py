@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'dbsocial',
         'USER': 'postgres',
-        'PASSWORD': 'ibiuna27',
+        'PASSWORD': 'xxxxxxxx',
         'CONN_MAX_AGE':0,
     }
 }
@@ -135,7 +135,7 @@ EMAIL_PORT = 587
 # EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 # EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_HOST_USER = "jmariamendes@uol.com.br"
-EMAIL_HOST_PASSWORD = "ibiuna27"
+EMAIL_HOST_PASSWORD = "xxxxxxxxx"
 EMAIL_USE_TLS = True
 
 REST_FRAMEWORK = {
