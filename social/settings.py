@@ -21,10 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-xm4h5_=dx)lmh5+f#s8z#t_a#$p((kfrzo6!8$%spox-p4%$^)'
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -80,8 +78,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'dbsocial',
-        'USER': 'postgres',
-        'PASSWORD': 'xxxxxxxx',
         'CONN_MAX_AGE':0,
     }
 }
@@ -132,10 +128,8 @@ LOGOUT_REDIRECT_URL = "dwitter:dashboard"
 
 EMAIL_HOST = "smtps.uol.com.br"
 EMAIL_PORT = 587
-# EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-# EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-EMAIL_HOST_USER = "jmariamendes@uol.com.br"
-EMAIL_HOST_PASSWORD = "xxxxxxxxx"
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
 
 REST_FRAMEWORK = {
