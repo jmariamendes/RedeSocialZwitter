@@ -15,7 +15,7 @@ from rest_framework import status
 from .forms import DweetForm, CustomUserCreationForm, ConviteAmigoForm
 from .models import Dweet, Profile, Convites, Mensagens, ControleMsgs
 
-from .serializers import UserSerializer, ProfileSerializer
+from .serializers import UserSerializer
 
 ''' View da tela inicial/dashboard:
     - Exibe todas as nsgs. dos usuários seguidos pelo usuário atual
